@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <MASM Include="main.asm" />
+    <MASM Include="_console.asm">
+      <Filter>Helpers</Filter>
+    </MASM>
+    <MASM Include="_math.asm">
+      <Filter>Helpers</Filter>
+    </MASM>
+    <MASM Include="_string.asm">
+      <Filter>Helpers</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_header.inc" />
+    <None Include="_console.inc">
+      <Filter>Helpers</Filter>
+    </None>
+    <None Include="_string.inc">
+      <Filter>Helpers</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{8f305cd4-7810-4032-8854-06e876cdaba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OS">
+      <UniqueIdentifier>{0e5bccca-bf03-4cc4-acca-1c0f75709e8a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_math.inc">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="os.console.inc">
+      <Filter>OS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Notes.txt" />
+  </ItemGroup>
+</Project>

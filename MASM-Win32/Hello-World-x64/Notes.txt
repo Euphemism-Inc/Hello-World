@@ -1,0 +1,53 @@
+MASM reference: https://docs.microsoft.com/en-us/cpp/assembler/masm/microsoft-macro-assembler-reference
+
+WriteConsole: https://msdn.microsoft.com/en-us/library/windows/desktop/ms687401(v=vs.85).aspx
+
+Calling convensions:
+Overview of x64 Calling Conventions: https://msdn.microsoft.com/en-us/library/ms235286.aspx
+Parameter Passing: https://msdn.microsoft.com/en-us/library/zthk2dkh.aspx
+
+Floating point -> First 4 parameters – XMM0 through XMM3. Others passed on stack.
+Integer -> First 4 parameters – RCX, RDX, R8, R9. Others passed on stack.
+Aggregates (8, 16, 32, or 64 bits) and __m64 -> First 4 parameters – RCX, RDX, R8, R9. Others passed on stack.
+
+
+
+LENGTHOF variable
+SIZEOF variable
+SIZEOF type
+LENGTH expression
+SIZE expression
+
+Description
+The LENGTHOF operator returns the number of data items allocated for <variable>.
+The SIZEOF operator returns the total number of bytes allocated for <variable> or the size of <type> in bytes.
+For variables, SIZEOF is equal to the value of LENGTHOF times the number of bytes in each element.
+
+The LENGTH and SIZE operators are allowed for compatibility with previous versions of the assembler.
+When applied to a data label, the LENGTH operator returns the number of elements created by the DUP operator; otherwise it returns 1.
+When applied to a data label, the SIZE operator returns the number of bytes allocated by the first initializer at the <variable> label.
+
+The LENGTHOF and SIZEOF operators in MASM 6.1 handle arrays much more consistently. These operators return the number of data items and
+the number of bytes in an initializer.
+
+
+
+Structs:
+SMALL_RECT struct
+	Left   dw ?
+	Top    dw ?
+	Right  dw ?
+	Bottom dw ?
+SMALL_RECT ends
+...
+
+CONSOLE_SCREEN_BUFFER_INFO struct
+	dwSize              COORD <>
+	dwCursorPosition    COORD <>
+	wAttributes         dw ?
+	srWindow            SMALL_RECT <>
+	dwMaximumWindowSize COORD <>
+CONSOLE_SCREEN_BUFFER_INFO ends 
+
+
+MOVZX RAX, (CONSOLE_SCREEN_BUFFER_INFO PTR [RAX]).srWindow.Right
